@@ -1,0 +1,37 @@
+[gd_scene load_steps=9 format=3 uid="uid://cnsiqd1oieqbb"]
+
+[ext_resource type="Script" uid="uid://d7skmfwad3fk" path="res://Root.cs" id="1_k88hj"]
+[ext_resource type="PackedScene" uid="uid://cq2o18bint1hq" path="res://test_node.tscn" id="2_cwqeq"]
+[ext_resource type="Script" uid="uid://dgneskjmykguj" path="res://Components/SpellNode.gd" id="2_vpg43"]
+[ext_resource type="Resource" uid="uid://bplbrtn8u2r46" path="res://Components/Effects/EffectType/FireDamage.tres" id="4_egnom"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_cwqeq"]
+
+[sub_resource type="Sky" id="Sky_3ipfy"]
+sky_material = SubResource("ProceduralSkyMaterial_cwqeq")
+
+[sub_resource type="Environment" id="Environment_g0d6c"]
+background_mode = 2
+sky = SubResource("Sky_3ipfy")
+
+[sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_f5i44"]
+
+[node name="Root" type="Node3D"]
+script = ExtResource("1_k88hj")
+
+[node name="TestNode" parent="." instance=ExtResource("2_cwqeq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.63174, 0)
+
+[node name="SpellNode" type="Node" parent="."]
+script = ExtResource("2_vpg43")
+spell_res = ExtResource("4_egnom")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.994288, -0.106733, 0, 0.106733, 0.994288, 0.00841451, 1.28523, 4.46125)
+environment = SubResource("Environment_g0d6c")
+attributes = SubResource("CameraAttributesPhysical_f5i44")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.836085, 0.5486, 0, -0.5486, 0.836085, -0.712611, 4.77356, 6.84918)
+
+[editable path="TestNode"]

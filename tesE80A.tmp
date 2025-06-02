@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cq2o18bint1hq"]
+
+[ext_resource type="Script" path="res://Components/RegenResource.gd" id="2_c5yv7"]
+[ext_resource type="Script" path="res://Components/EntityResource.gd" id="2_khrvh"]
+[ext_resource type="Script" path="res://Components/Experience.gd" id="4_wr5pj"]
+
+[node name="TestNode" type="Node3D"]
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("2_c5yv7")
+
+[node name="Stamina" type="Node" parent="."]
+script = ExtResource("2_c5yv7")
+
+[node name="mana" type="Node" parent="."]
+script = ExtResource("2_c5yv7")
+
+[node name="Level" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_khrvh")
+
+[node name="Experience" type="Node" parent="Level"]
+script = ExtResource("4_wr5pj")

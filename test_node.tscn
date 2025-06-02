@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://cq2o18bint1hq"]
+
+[ext_resource type="Script" uid="uid://b7ing4hhreni" path="res://weakness.gd" id="1_nk636"]
+[ext_resource type="Script" uid="uid://dat7bdeufkktq" path="res://Components/EntityResources/EntityResource.gd" id="2_4swoa"]
+[ext_resource type="Script" uid="uid://wxu1ew3gujfb" path="res://Components/EntityResources/RegenResource.gd" id="2_c5yv7"]
+[ext_resource type="PackedScene" uid="uid://drwkklbl3vn6m" path="res://Components/EntityResources/level.tscn" id="2_t3ei4"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4swoa"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_73e00"]
+
+[node name="TestNode" type="CharacterBody3D"]
+script = ExtResource("1_nk636")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_4swoa")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_73e00")
+skeleton = NodePath("")
+
+[node name="Resources" type="Node" parent="."]
+
+[node name="Health" type="Node" parent="Resources"]
+script = ExtResource("2_4swoa")
+max_value = 100.0
+
+[node name="RegenResource" type="Node" parent="Resources/Health"]
+script = ExtResource("2_c5yv7")
+regen_rate = 0.01
+metadata/_custom_type_script = "uid://wxu1ew3gujfb"
+
+[node name="Stamina" type="Node" parent="Resources"]
+script = ExtResource("2_4swoa")
+max_value = 100.0
+
+[node name="RegenResource" type="Node" parent="Resources/Stamina"]
+script = ExtResource("2_c5yv7")
+regen_rate = 0.01
+metadata/_custom_type_script = "uid://wxu1ew3gujfb"
+
+[node name="Mana" type="Node" parent="Resources"]
+script = ExtResource("2_4swoa")
+max_value = 100.0
+
+[node name="RegenResource" type="Node" parent="Resources/Mana"]
+script = ExtResource("2_c5yv7")
+regen_rate = 0.01
+metadata/_custom_type_script = "uid://wxu1ew3gujfb"
+
+[node name="PlayerLevel" parent="Resources" instance=ExtResource("2_t3ei4")]
+unique_name_in_owner = true
